@@ -6,7 +6,7 @@ services:
       context: node
       dockerfile: Dockerfile.prod
     container_name: app
-    entrypoint: dockerize -wait tcp://db:3306 -timeout 30s node index.js
+    entrypoint: dockerize -wait tcp://db:3306 -timeout 120s node index.js
     networks: 
       - pfa-network-db
       - pfa-network-app
@@ -40,7 +40,7 @@ services:
         - pfa-network-app    
     tty: true
     ports: 
-        - "8080:80"
+        - "8000:80"
     depends_on: 
         - app
     
